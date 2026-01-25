@@ -28,15 +28,25 @@ Le projet utilise **BeautifulSoup** pour le web scraping et affiche les résulta
 
 ## Structure du projet
 📦 streamlit_project
+
 ┣ 📂 Donnees
+
 ┃   ┗ 📜 fichiers CSV générés par le scraping
+
 ┣ 📜 app.py                  # Application principale Streamlit
+
 ┣ 📜 location_vehicule.py    # Scraping des véhicules en location
+
 ┣ 📜 vehicule.py             # Scraping des véhicules en vente
+
 ┣ 📜 motos_et_scooters.py    # Scraping des motos et scooters
+
 ┣ 📜 requirements.txt        # Dépendances Python
+
 ┣ 📜 README.md               # Documentation
+
 ┣ 📜 LICENSE
+
 ┗ 📜 .gitignore
 
 ---
@@ -62,29 +72,23 @@ Le projet utilise **BeautifulSoup** pour le web scraping et affiche les résulta
 
 ## ▶️ Exécution du projet en local
 
-### 1️⃣ Cloner le dépôt
+### 1 Cloner le dépôt
 ```bash
 git clone https://github.com/MHSECK/streamlit_project.git
 cd streamlit_project
 
-### 2️⃣ **Créer un environnement virtuel**
+### 2 Créer l’environnement virtuel
 python -m venv venv
 
-Activation :
-	•	Windows
+# Activer l’environnement
+# Windows
 venv\Scripts\activate
- •	Linux / macOS
+
+# Linux / macOS
 source venv/bin/activate
 
-### 3️⃣ Installer les dépendances
-     pip install -r requirements.txt
+### Installer les dépendances
+pip install -r requirements.txt
 
-### 4️⃣ Lancer l’application Streamlit
-     streamlit run app.py
-
-
-
-
-
-
-
+# Lancer l’application Streamlit
+streamlit run app.py
