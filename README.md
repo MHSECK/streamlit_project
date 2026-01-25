@@ -1,94 +1,107 @@
+# Streamlit Project — Web Scraping Véhicules
 
-# Streamlit Project – Web Scraping Véhicules
+Auteur : MHSECK — Mouhamadou Habib Seck https://github.com/MHSECK
 
-Application web développée avec **Streamlit** permettant de **scraper, analyser et visualiser** des données de véhicules (location, vente, motos et scooters) à partir du web.
+Description
+-----------
+Application web développée avec Streamlit pour collecter, analyser et visualiser des données de véhicules (locations, ventes, motos et scooters) extraites depuis le web. Le projet sépare la logique de scraping par catégorie, génère des fichiers CSV et propose une interface interactive pour l'exploration et la visualisation des données.
 
-Le projet utilise **BeautifulSoup** pour le web scraping et affiche les résultats sous forme de tableaux et graphiques interactifs.
+Principales fonctionnalités
+---------------------------
+- Scraping de sites de petites annonces pour :
+  - Véhicules en location
+  - Véhicules en vente
+  - Motos et scooters
+- Nettoyage et structuration des données collectées
+- Export des résultats au format CSV
+- Visualisations et tableaux interactifs via Streamlit
+- Conception modulaire pour faciliter l'extension et la maintenance
 
----
-
-##  Objectifs du projet
-- Scraper des données de véhicules depuis des sites web
-- Séparer la logique de scraping par catégorie
-- Générer des fichiers CSV à partir des données collectées
-- Visualiser les données via une interface Streamlit
-- Déployer facilement l’application via Streamlit Cloud
-
----
-
-##  Technologies utilisées
+Technologies
+------------
 - Python 3.9+
 - Streamlit
-- Pandas
-- Requests
+- pandas
+- requests
 - BeautifulSoup4
-- Matplotlib
+- matplotlib
 
----
+Structure du projet
+-------------------
+- Donnees/                      — Dossier contenant les fichiers CSV générés par le scraping
+- app.py                        — Point d’entrée de l’application Streamlit
+- location_vehicule.py          — Fonctions de scraping pour les véhicules en location
+- vehicule.py                   — Fonctions de scraping pour les véhicules en vente
+- motos_et_scooters.py          — Fonctions de scraping pour les motos et scooters
+- requirements.txt              — Dépendances Python
+- README.md                     — Documentation (ce fichier)
+- LICENSE                       — Licence du projet
+- .gitignore                    — Fichiers à ignorer par Git
 
-## Structure du projet
-📦 streamlit_project
-
-┣ 📂 Donnees
-
-┃   ┗ 📜 fichiers CSV générés par le scraping
-
-┣ 📜 app.py                  # Application principale Streamlit
-
-┣ 📜 location_vehicule.py    # Scraping des véhicules en location
-
-┣ 📜 vehicule.py             # Scraping des véhicules en vente
-
-┣ 📜 motos_et_scooters.py    # Scraping des motos et scooters
-
-┣ 📜 requirements.txt        # Dépendances Python
-
-┣ 📜 README.md               # Documentation
-
-┣ 📜 LICENSE
-
-┗ 📜 .gitignore
-
----
-
-## 🧩 Description des modules
-- **`location_vehicule.py`**  
-  Contient les fonctions de scraping pour les véhicules en location.
-
-- **`vehicule.py`**  
-  Contient les fonctions de scraping pour les véhicules en vente.
-
-- **`motos_et_scooters.py`**  
-  Contient les fonctions de scraping pour les motos et scooters à vendre.
-
-- **`Donnees/`**  
-  Dossier contenant les fichiers CSV générés par le web scraping.
-
-- **`app.py`**  
-  Point d’entrée de l’application Streamlit.  
-  Il importe les fonctions de scraping et affiche les résultats.
-
----
-
-## ▶️ Exécution du projet en local
-
-### 1 Cloner le dépôt
+Installation et exécution (local)
+---------------------------------
+1. Cloner le dépôt
 ```bash
 git clone https://github.com/MHSECK/streamlit_project.git
 cd streamlit_project
+```
 
-### 2 Créer l’environnement virtuel
+2. Créer et activer un environnement virtuel
+```bash
 python -m venv venv
 
-# Activer l’environnement
 # Windows
 venv\Scripts\activate
 
 # Linux / macOS
 source venv/bin/activate
+```
 
-### Installer les dépendances
+3. Installer les dépendances
+```bash
 pip install -r requirements.txt
+```
 
-# Lancer l’application Streamlit
+4. Lancer l'application Streamlit
+```bash
 streamlit run app.py
+```
+
+Utilisation
+-----------
+- L'interface Streamlit vous permettra de sélectionner la catégorie (location, vente, motos/scooters), d'exécuter le scraping et d'explorer les résultats.
+- Les fichiers CSV générés sont enregistrés dans le dossier `Donnees/`.
+- Les fonctions de scraping sont organisées par fichier (ex. `vehicule.py` pour la vente) : vous pouvez les réutiliser ou les étendre dans d'autres scripts.
+
+Déploiement
+----------
+Cette application est prête à être déployée sur Streamlit Cloud ou sur tout autre service supportant les applications Streamlit. Veillez à :
+- inclure le fichier `requirements.txt`
+- configurer d'éventuelles variables d'environnement si vous adaptez le scraping à des sites nécessitant des identifiants ou des clés
+
+Bonnes pratiques et limites
+---------------------------
+- Respectez les conditions d'utilisation et le fichier robots.txt des sites que vous scrapez.
+- Évitez les requêtes trop fréquentes : insérez des délais (sleep) entre les requêtes si nécessaire.
+- Le scraping peut être sensible aux changements de structure HTML des sites cibles ; maintenir des tests et des validations régulières est recommandé.
+
+Contribution
+------------
+Les contributions sont bienvenues : ouvrez une issue pour proposer une fonctionnalité ou corriger un bug, puis soumettez une pull request. Suggestions typiques :
+- Ajout de nouvelles sources de données
+- Amélioration des fonctions de nettoyage et d'export
+- Tests unitaires et CI
+
+Support / Contact
+-----------------
+- Problèmes et demandes : ouvrez une issue sur le dépôt GitHub
+- Auteur : MHSECK — Mouhamadou Habib Seck
+- https://github.com/MHSECK
+
+Licence
+-------
+Consultez le fichier `LICENSE` pour les détails sur la licence du projet.
+
+Remarques finales
+-----------------
+Ce projet fournit une base modulaire et extensible pour le web scraping d'annonces de véhicules et leur visualisation via Streamlit. N'hésitez pas à forker, améliorer et adapter selon vos besoins en respectant les règles d'usage des sites sources.
