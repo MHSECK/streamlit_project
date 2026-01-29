@@ -16,49 +16,22 @@ def motos(n):
         res = get(url)
         soup = bs(res.content, 'html.parser')
 
-        containers = soup.find_all(
-            "div", class_="listings-cards__list-item mb-md-3 mb-3"
-        )
+        containers = soup.find_all("div", class_="listings-cards__list-item mb-md-3 mb-3" )
 
         data = []
 
         for container in containers:
             try:
-                gen_inf = container.find(
-                    'h2',
-                    class_="listing-card__header__title mb-md-2 mb-0"
-                ).a.text.strip().split()
-
+                gen_inf = container.find( 'h2',class_="listing-card__header__title mb-md-2 mb-0").a.text.strip().split()
                 marque = gen_inf[0]
                 annee = int(gen_inf[-1])
                 modele = " ".join(gen_inf[1:-1])
-
-                prix = float(
-                    container.find(
-                        'h3',
-                        class_="listing-card__header__price font-weight-bold text-uppercase mb-0"
-                    ).text.strip().replace('\u202f', '').replace(' F CFA', '')
-                )
-
-                quartier = container.find(
-                    "span", class_="town-suburb d-inline-block"
-                ).text.replace(',', '')
-
-                infos_tech = container.find_all(
-                    "li", class_="listing-card__attribute list-inline-item"
-                )
-
-                kilometrage = float(
-                    infos_tech[1].text.replace(" km", "").replace("Ref. ", "")
-                )
-
-                region = container.find(
-                    "span", class_="province font-weight-bold d-inline-block"
-                ).text
-
-                proprietaire = container.find(
-                    "p", "time-author m-0"
-                ).text.replace("Par ", "")
+                prix = float(container.find('h3',class_="listing-card__header__price font-weight-bold text-uppercase mb-0").text.strip().replace('\u202f', '').replace(' F CFA', ''))
+                quartier = container.find("span", class_="town-suburb d-inline-block").text.replace(',', '')
+                infos_tech = container.find_all("li", class_="listing-card__attribute list-inline-item")
+                kilometrage = float(infos_tech[1].text.replace(" km", "").replace("Ref. ", ""))
+                region = container.find("span", class_="province font-weight-bold d-inline-block").text
+                proprietaire = container.find("p", "time-author m-0").text.replace("Par ", "")
 
                 data.append({
                     "marque": marque,
@@ -76,14 +49,14 @@ def motos(n):
 
         df = pd.concat([df, pd.DataFrame(data)], ignore_index=True)
 
-        # 🔥 PROGRESSION EN TEMPS RÉEL
+        # PROGRESSION EN TEMPS RÉEL
         percent = int((index / n) * 100)
         progress_bar.progress(percent)
         status_text.markdown(
-            f"🛵 Scraping motos & scooters : **Page {index}/{n}** — **{percent}%**"
+            f" Scraping motos & scooters : **Page {index}/{n}** — **{percent}%**"
         )
 
-    status_text.success("✅ Scraping motos terminé avec succès !")
+    status_text.success("Scraping motos terminé avec succès !")
     time.sleep(1)
     progress_bar.empty()
     status_text.empty()
