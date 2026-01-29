@@ -15,47 +15,24 @@ def vehicule(n):
         res = get(url)
         soup = bs(res.content, 'html.parser')
 
-        containers = soup.find_all(
-            "div", class_="listings-cards__list-item mb-md-3 mb-3"
-        )
+        containers = soup.find_all("div", class_="listings-cards__list-item mb-md-3 mb-3")
 
         data = []
 
         for container in containers:
             try:
-                gen_inf = container.find(
-                    'h2', class_="listing-card__header__title mb-md-2 mb-0"
-                ).a.text.strip().split()
-
+                gen_inf = container.find('h2', class_="listing-card__header__title mb-md-2 mb-0").a.text.strip().split()
                 marque = gen_inf[0]
                 annee = int(gen_inf[-1])
                 modele = " ".join(gen_inf[1:-1])
-
-                prix = float(
-                    container.find(
-                        'h3',
-                        class_="listing-card__header__price font-weight-bold text-uppercase mb-0"
-                    ).text.strip().replace('\u202f', '').replace(' F CFA', '')
-                )
-
-                quartier = container.find(
-                    "span", class_="town-suburb d-inline-block"
-                ).text.replace(',', '')
-
-                region = container.find(
-                    "span", class_="province font-weight-bold d-inline-block"
-                ).text
-
-                infos_tech = container.find_all(
-                    "li", class_="listing-card__attribute list-inline-item"
-                )
-
+                prix = float(container.find('h3',class_="listing-card__header__price font-weight-bold text-uppercase mb-0").text.strip().replace('\u202f', '').replace(' F CFA', ''))
+                quartier = container.find("span", class_="town-suburb d-inline-block").text.replace(',', '')
+                region = container.find( "span", class_="province font-weight-bold d-inline-block" ).text
+                infos_tech = container.find_all("li", class_="listing-card__attribute list-inline-item")
                 kilometrage = float(infos_tech[1].text.replace(" km", ""))
                 boite = infos_tech[2].text
                 carburant = infos_tech[3].text
-                proprietaire = container.find(
-                    "p", "time-author m-0"
-                ).text.replace("Par ", "")
+                proprietaire = container.find("p", "time-author m-0").text.replace("Par ", "")
 
                 data.append({
                     "marque": marque,
