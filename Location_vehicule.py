@@ -32,17 +32,11 @@ def loc_vehicule(n):
                     ).text.strip().replace('\u202f', '').replace(' F CFA', '')
                 )
 
-                quartier = container.find(
-                    "span", class_="town-suburb d-inline-block"
-                ).text.replace(',', '')
+                quartier = container.find("span", class_="town-suburb d-inline-block").text.replace(',', '')
 
-                region = container.find(
-                    "span", class_="province font-weight-bold d-inline-block"
-                ).text
+                region = container.find("span", class_="province font-weight-bold d-inline-block").text
 
-                proprietaire = container.find(
-                    "p", "time-author m-0"
-                ).text.replace("Par ", "")
+                proprietaire = container.find("p", "time-author m-0").text.replace("Par ", "")
 
                 data.append({
                     "marque": marque,
@@ -59,14 +53,14 @@ def loc_vehicule(n):
 
         df = pd.concat([df, pd.DataFrame(data)], ignore_index=True)
 
-        #  PROGL
+        #  PROGRESSION
         percent = int((index / n) * 100)
         progress_bar.progress(percent)
         status_text.markdown(
-            f"🚗 Location de véhicules : **Page {index}/{n}** — **{percent}%**"
+            f" Location de véhicules : **Page {index}/{n}** — **{percent}%**"
         )
 
-    status_text.success("✅ Scraping location terminé avec succès !")
+    status_text.success("Scraping location terminé avec succès !")
     time.sleep(1)
     progress_bar.empty()
     status_text.empty()
