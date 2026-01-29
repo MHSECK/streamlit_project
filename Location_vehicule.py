@@ -15,9 +15,7 @@ def loc_vehicule(n):
         res = get(url)
         soup = bs(res.content, 'html.parser')
 
-        containers = soup.find_all(
-            "div", class_="listings-cards__list-item mb-md-3 mb-3"
-        )
+        containers = soup.find_all( "div", class_="listings-cards__list-item mb-md-3 mb-3")
 
         data = []
 
@@ -27,22 +25,10 @@ def loc_vehicule(n):
                 marque = gen_inf[0]
                 annee = int(gen_inf[-1])
                 modele = " ".join(gen_inf[1:-1])
-
-                prix = float(container.find('h3',class_="listing-card__header__price font-weight-bold text-uppercase mb-0"
-                    ).text.strip().replace('\u202f', '').replace(' F CFA', '')
-                )
-
-                quartier = container.find(
-                    "span", class_="town-suburb d-inline-block"
-                ).text.replace(',', '')
-
-                region = container.find(
-                    "span", class_="province font-weight-bold d-inline-block"
-                ).text
-
-                proprietaire = container.find(
-                    "p", "time-author m-0"
-                ).text.replace("Par ", "")
+                prix = float(container.find('h3',class_="listing-card__header__price font-weight-bold text-uppercase mb-0").text.strip().replace('\u202f', '').replace(' F CFA', ''))
+                quartier = container.find("span", class_="town-suburb d-inline-block").text.replace(',', '')
+                region = container.find("span", class_="province font-weight-bold d-inline-block").text
+                proprietaire = container.find("p", "time-author m-0" ).text.replace("Par ", "")
 
                 data.append({
                     "marque": marque,
@@ -63,10 +49,10 @@ def loc_vehicule(n):
         percent = int((index / n) * 100)
         progress_bar.progress(percent)
         status_text.markdown(
-            f"🚗 Location de véhicules : **Page {index}/{n}** — **{percent}%**"
+            f"Location de véhicules : **Page {index}/{n}** — **{percent}%**"
         )
 
-    status_text.success("✅ Scraping location terminé avec succès !")
+    status_text.success("Scraping location terminé avec succès !")
     time.sleep(1)
     progress_bar.empty()
     status_text.empty()
