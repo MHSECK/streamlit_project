@@ -76,14 +76,14 @@ def motos(n):
 
         df = pd.concat([df, pd.DataFrame(data)], ignore_index=True)
 
-        # 🔥 PROGRESSION EN TEMPS RÉEL
+        #  PROGRESSION 
         percent = int((index / n) * 100)
         progress_bar.progress(percent)
         status_text.markdown(
             f"🛵 Scraping motos & scooters : **Page {index}/{n}** — **{percent}%**"
         )
 
-    status_text.success("✅ Scraping motos terminé avec succès !")
+    status_text.success(" Scraping motos terminé avec succès !")
     time.sleep(1)
     progress_bar.empty()
     status_text.empty()
