@@ -1,11 +1,14 @@
 # Streamlit Project — Web Scraping Véhicules
 
-Auteur : MHSECK — Mouhamadou Habib Seck https://github.com/MHSECK
-Lien application :  https://appproject-axpapmv4rb4rkwpywkyvih.streamlit.app/
+Auteur : MHSECK — Mouhamadou Habib Seck — https://github.com/MHSECK
+
+Application en ligne
+-------------------
+Ouvrez l'application Streamlit en cliquant ici : [🌐 Ouvrir l'application sur Streamlit Cloud](https://appproject-axpapmv4rb4rkwpywkyvih.streamlit.app/)
 
 Description
 -----------
-Application web développée avec Streamlit pour collecter, analyser et visualiser des données de véhicules (locations, ventes, motos et scooters) extraites depuis le web. Le projet sépare la logique de scraping par catégorie, génère des fichiers CSV et propose une interface interactive pour l'exploration et la visualisation des données.
+Application web développée avec Streamlit pour collecter, analyser et visualiser des données de véhicules (locations, ventes, motos et scooters) extraites depuis le web. Le projet sépare la logiq[...]
 
 Principales fonctionnalités
 ---------------------------
@@ -97,7 +100,8 @@ Support / Contact
 -----------------
 - Problèmes et demandes : ouvrez une issue sur le dépôt GitHub
 - Auteur : MHSECK — Mouhamadou Habib Seck
-- https://github.com/MHSECK
+- Profil GitHub : https://github.com/MHSECK
+- Application en ligne : https://appproject-axpapmv4rb4rkwpywkyvih.streamlit.app/
 
 Licence
 -------
@@ -105,4 +109,4 @@ Consultez le fichier `LICENSE` pour les détails sur la licence du projet.
 
 Remarques finales
 -----------------
-Ce projet fournit une base modulaire et extensible pour le web scraping d'annonces de véhicules et leur visualisation via Streamlit. N'hésitez pas à forker, améliorer et adapter selon vos besoins en respectant les règles d'usage des sites sources.
+Ce projet fournit une base modulaire et extensible pour le web scraping d'annonces de véhicules et leur visualisation via Streamlit. N'hésitez pas à forker, améliorer et adapter selon vos besoins [...]
